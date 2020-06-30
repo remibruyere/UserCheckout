@@ -14,14 +14,14 @@ namespace ESGI.DesignPattern.Projet
 
         private readonly UserConfirmation termsAndConditionsAccepted;
 
-        public Checkout(Product product, IEmailService emailService)
+        public Checkout(Product product, IEmailService emailService, IMessageBoxWrapper messageBoxWrapper)
         {
             this.product = product;
             this.emailService = emailService;
-            this.newsLetterSubscribed = new UserConfirmation("Subscribe to our product " + product.Name + " newsletter?");
+            this.newsLetterSubscribed = new UserConfirmation("Subscribe to our product " + product.Name + " newsletter?", messageBoxWrapper);
             this.termsAndConditionsAccepted = new UserConfirmation(
                 "Accept our terms and conditions?\n" + //
-                "(Mandatory to place order for " + product.Name + ")");
+                "(Mandatory to place order for " + product.Name + ")", messageBoxWrapper);
         }
 
         public virtual void ConfirmOrder()

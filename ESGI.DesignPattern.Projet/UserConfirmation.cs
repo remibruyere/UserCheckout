@@ -7,15 +7,21 @@ namespace ESGI.DesignPattern.Projet
 {
     public class UserConfirmation
     {
+        private readonly string message;
+        private readonly IMessageBoxWrapper messageBoxWrapper;
+
         public bool Accepted { get; private set; }
 
-        public UserConfirmation(string message)
+        public UserConfirmation(string message, IMessageBoxWrapper messageBoxWrapper)
         {
-            var result = MessageBox.Show(
-                 message,
-                 "Choose Option",
-                 0,
-                 0);
+            this.message = message;
+            this.messageBoxWrapper = messageBoxWrapper;
+            this.Accepted = false;
+        }
+
+        public void AskConfirmation()
+        {
+            var result = messageBoxWrapper.Show(message);
 
             this.Accepted = result == MessageBoxResult.Yes;
         }

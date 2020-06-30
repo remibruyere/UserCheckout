@@ -5,7 +5,6 @@ D:\Documents\ESGI 4AL\c-sharp-design-pattern\ESGI.DesignPattern.Projet\ESGI.Desi
 D:\Documents\ESGI 4AL\c-sharp-design-pattern\ESGI.DesignPattern.Projet\ESGI.DesignPattern.Projet\bin\Debug\netcoreapp3.1\ESGI.DesignPattern.Projet.dll
 D:\Documents\ESGI 4AL\c-sharp-design-pattern\ESGI.DesignPattern.Projet\ESGI.DesignPattern.Projet\bin\Debug\netcoreapp3.1\ESGI.DesignPattern.Projet.pdb
 D:\Documents\ESGI 4AL\c-sharp-design-pattern\ESGI.DesignPattern.Projet\ESGI.DesignPattern.Projet\bin\Debug\netcoreapp3.1\PresentationFramework.dll
-D:\Documents\ESGI 4AL\c-sharp-design-pattern\ESGI.DesignPattern.Projet\ESGI.DesignPattern.Projet\obj\Debug\netcoreapp3.1\ESGI.DesignPattern.Projet.csprojAssemblyReference.cache
 D:\Documents\ESGI 4AL\c-sharp-design-pattern\ESGI.DesignPattern.Projet\ESGI.DesignPattern.Projet\obj\Debug\netcoreapp3.1\ESGI.DesignPattern.Projet.AssemblyInfoInputs.cache
 D:\Documents\ESGI 4AL\c-sharp-design-pattern\ESGI.DesignPattern.Projet\ESGI.DesignPattern.Projet\obj\Debug\netcoreapp3.1\ESGI.DesignPattern.Projet.AssemblyInfo.cs
 D:\Documents\ESGI 4AL\c-sharp-design-pattern\ESGI.DesignPattern.Projet\ESGI.DesignPattern.Projet\obj\Debug\netcoreapp3.1\ESGI.DesignPattern.Projet.csproj.CoreCompileInputs.cache
