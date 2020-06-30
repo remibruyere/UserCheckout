@@ -11,10 +11,13 @@ namespace ESGI.DesignPattern.Projet.Tests
         {
             Product product = new Product("test_product");
 
-            Mock<IEmailService> mock = new Mock<IEmailService>();
+            Mock<IEmailService> mockEmailService = new Mock<IEmailService>();
 
-            //UserConfirmation userAccepted = new UserConfirmation("LOL");
+            Checkout checkout = new Checkout(product, mockEmailService.Object);
 
+            checkout.ConfirmOrder();
+
+            mockEmailService.Verify(m => m.SubscribeUserFor(product));
         }
 
         //User should accept terms and contions
