@@ -22,4 +22,10 @@
     <ProjectReference Include="..\ESGI.DesignPattern.Projet\ESGI.DesignPattern.Projet.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="PresentationFake">
+      <HintPath>..\Libs\PresentationFake.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using System.Windows;
+using PresentationFake;
 
 namespace ESGI.DesignPattern.Projet
 {
@@ -11,7 +11,7 @@ namespace ESGI.DesignPattern.Projet
         {
             return MessageBox.Show(message,
                 "Choose Option",
-                 MessageBoxButton.YesNo);
+                 MessageBoxButtons.YESNO);
         }
     }
 }

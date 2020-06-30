@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PresentationFake;
+using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.Windows;
@@ -23,7 +24,9 @@ namespace ESGI.DesignPattern.Projet
         {
             var result = messageBoxWrapper.Show(message);
 
-            this.Accepted = result == MessageBoxResult.Yes;
+            Console.WriteLine(result);
+
+            this.Accepted = result == MessageBoxResult.YES;
         }
     }
 }

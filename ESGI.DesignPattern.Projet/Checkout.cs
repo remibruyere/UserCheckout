@@ -26,6 +26,8 @@ namespace ESGI.DesignPattern.Projet
 
         public virtual void ConfirmOrder()
         {
+            newsLetterSubscribed.AskConfirmation();
+            termsAndConditionsAccepted.AskConfirmation();
             if (!termsAndConditionsAccepted.Accepted)
             {
                 throw new OrderCancelledException(product);

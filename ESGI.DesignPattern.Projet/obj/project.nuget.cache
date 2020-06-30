@@ -1,21 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "hwaPONw51iXyl8tJ7jSIJM2NBpgRRe+ILsrmHme4oQAbwn8u4jopO/zjhIx/CUi3ge83Ygvm+k07RItwUfcEZQ==",
+  "dgSpecHash": "Ue5qzcLltAXpjPIjdSntMc7k0P6Av3mmG97ZXVQQKySqBrGx6TbCT1vtShlFZByX3zixOFWwanr7exbRoKOQWQ==",
   "success": true,
   "projectFilePath": "D:\\Documents\\ESGI 4AL\\c-sharp-design-pattern\\ESGI.DesignPattern.Projet\\ESGI.DesignPattern.Projet\\ESGI.DesignPattern.Projet.csproj",
-  "expectedPackageFiles": [
-    "C:\\Users\\Remi\\.nuget\\packages\\presentationframework\\4.6.0\\presentationframework.4.6.0.nupkg.sha512"
-  ],
-  "logs": [
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Le package 'PresentationFramework 4.6.0' a été restauré en utilisant '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' au lieu du framework cible du projet '.NETCoreApp,Version=v3.1'. Ce package n'est peut-être pas totalement compatible avec votre projet.",
-      "libraryId": "PresentationFramework",
-      "targetGraphs": [
-        ".NETCoreApp,Version=v3.1"
-      ]
-    }
-  ]
+  "expectedPackageFiles": [],
+  "logs": []
 }

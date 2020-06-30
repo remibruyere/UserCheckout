@@ -6,7 +6,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="PresentationFramework" Version="4.6.0" />
+    <Reference Include="PresentationFake">
+      <HintPath>..\Libs\PresentationFake.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>
