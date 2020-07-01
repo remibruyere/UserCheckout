@@ -1,21 +1,20 @@
-﻿using PresentationFake;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Runtime.Serialization;
-using System.Windows;
+using System.Text;
+using PresentationFake;
 
 namespace ESGI.DesignPattern.Projet
 {
-    public abstract class UserConfirmation : IUserConfirmation
+    class TermsAndConditionsConfirmation : IUserConfirmation
     {
         private readonly string message;
         private readonly IMessageBoxWrapper messageBoxWrapper;
 
         public bool Accepted { get; private set; }
 
-        public UserConfirmation(string message, IMessageBoxWrapper messageBoxWrapper)
+        public TermsAndConditionsConfirmation(Product product, IMessageBoxWrapper messageBoxWrapper)
         {
-            this.message = message;
+            this.message = "Accept our terms and conditions?\n(Mandatory to place order for " + product.Name + ")";
             this.messageBoxWrapper = messageBoxWrapper;
             this.Accepted = false;
         }
@@ -23,8 +22,6 @@ namespace ESGI.DesignPattern.Projet
         public void AskConfirmation()
         {
             var result = messageBoxWrapper.Show(message);
-
-            Console.WriteLine(result);
 
             this.Accepted = result == MessageBoxResult.YES;
         }

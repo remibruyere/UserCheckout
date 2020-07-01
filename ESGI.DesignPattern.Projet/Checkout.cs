@@ -10,18 +10,16 @@ namespace ESGI.DesignPattern.Projet
 
         private readonly IEmailService emailService;
 
-        private readonly UserConfirmation newsLetterSubscribed;
+        private readonly NewsletterConfirmation newsLetterSubscribed;
 
-        private readonly UserConfirmation termsAndConditionsAccepted;
+        private readonly TermsAndConditionsConfirmation termsAndConditionsAccepted;
 
         public Checkout(Product product, IEmailService emailService, IMessageBoxWrapper messageBoxWrapper)
         {
             this.product = product;
             this.emailService = emailService;
-            this.newsLetterSubscribed = new UserConfirmation("Subscribe to our product " + product.Name + " newsletter?", messageBoxWrapper);
-            this.termsAndConditionsAccepted = new UserConfirmation(
-                "Accept our terms and conditions?\n" + //
-                "(Mandatory to place order for " + product.Name + ")", messageBoxWrapper);
+            this.newsLetterSubscribed = new NewsletterConfirmation(product, messageBoxWrapper);
+            this.termsAndConditionsAccepted = new TermsAndConditionsConfirmation(product, messageBoxWrapper);
         }
 
         public virtual void ConfirmOrder()

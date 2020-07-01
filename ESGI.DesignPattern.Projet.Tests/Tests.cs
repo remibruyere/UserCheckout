@@ -5,6 +5,10 @@ using PresentationFake;
 
 namespace ESGI.DesignPattern.Projet.Tests
 {
+    /*
+     REFACTO:
+        - etendre UserConfimation sur deux classes : NewsletterConfimation / TermsAndConditionsConfimation
+     */
     public class Tests
     {
         [Fact]
