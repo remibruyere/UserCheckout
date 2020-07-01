@@ -1,7 +1,6 @@
-﻿using System;
-using Xunit;
-using Moq;
+﻿using Moq;
 using PresentationFake;
+using Xunit;
 
 namespace ESGI.DesignPattern.Projet.Tests
 {
@@ -20,7 +19,14 @@ namespace ESGI.DesignPattern.Projet.Tests
             Mock<IMessageBoxWrapper> mockMessageBoxWrapper = new Mock<IMessageBoxWrapper>();
             mockMessageBoxWrapper.Setup(x => x.Show(It.IsAny<string>())).Returns(MessageBoxResult.YES);
 
-            Checkout checkout = new Checkout(product, mockEmailService.Object, mockMessageBoxWrapper.Object);
+            NewsletterConfirmation newsletterConfirmation = new NewsletterConfirmation(product, mockMessageBoxWrapper.Object);
+            TermsAndConditionsConfirmation termsAndConditionsConfirmation = new TermsAndConditionsConfirmation(product, mockMessageBoxWrapper.Object);
+
+            Checkout checkout = new Checkout(
+                product,
+                mockEmailService.Object,
+                newsletterConfirmation,
+                termsAndConditionsConfirmation);
 
             checkout.ConfirmOrder();
 
@@ -38,7 +44,14 @@ namespace ESGI.DesignPattern.Projet.Tests
             mockMessageBoxWrapper.Setup(x => x.Show(It.IsAny<string>())).Returns(MessageBoxResult.YES);
             mockMessageBoxWrapper.Setup(x => x.Show("Subscribe to our product " + product.Name + " newsletter?")).Returns(MessageBoxResult.NO);
 
-            Checkout checkout = new Checkout(product, mockEmailService.Object, mockMessageBoxWrapper.Object);
+            NewsletterConfirmation newsletterConfirmation = new NewsletterConfirmation(product, mockMessageBoxWrapper.Object);
+            TermsAndConditionsConfirmation termsAndConditionsConfirmation = new TermsAndConditionsConfirmation(product, mockMessageBoxWrapper.Object);
+
+            Checkout checkout = new Checkout(
+                product,
+                mockEmailService.Object,
+                newsletterConfirmation,
+                termsAndConditionsConfirmation);
 
             mockEmailService.Verify(m => m.SubscribeUserFor(product), Times.Never());
         }
@@ -54,7 +67,14 @@ namespace ESGI.DesignPattern.Projet.Tests
             mockMessageBoxWrapper.Setup(x => x.Show(It.IsAny<string>())).Returns(MessageBoxResult.YES);
             mockMessageBoxWrapper.Setup(x => x.Show("Accept our terms and conditions?\n(Mandatory to place order for " + product.Name + ")")).Returns(MessageBoxResult.NO);
 
-            Checkout checkout = new Checkout(product, mockEmailService.Object, mockMessageBoxWrapper.Object);
+            NewsletterConfirmation newsletterConfirmation = new NewsletterConfirmation(product, mockMessageBoxWrapper.Object);
+            TermsAndConditionsConfirmation termsAndConditionsConfirmation = new TermsAndConditionsConfirmation(product, mockMessageBoxWrapper.Object);
+
+            Checkout checkout = new Checkout(
+                product,
+                mockEmailService.Object,
+                newsletterConfirmation,
+                termsAndConditionsConfirmation);
 
             Assert.Throws<OrderCancelledException>(() =>
             {
@@ -74,7 +94,14 @@ namespace ESGI.DesignPattern.Projet.Tests
 
             mockMessageBoxWrapper.Setup(x => x.Show(It.IsAny<string>())).Returns(MessageBoxResult.NO);
 
-            Checkout checkout = new Checkout(product, mockEmailService.Object, mockMessageBoxWrapper.Object);
+            NewsletterConfirmation newsletterConfirmation = new NewsletterConfirmation(product, mockMessageBoxWrapper.Object);
+            TermsAndConditionsConfirmation termsAndConditionsConfirmation = new TermsAndConditionsConfirmation(product, mockMessageBoxWrapper.Object);
+
+            Checkout checkout = new Checkout(
+                product,
+                mockEmailService.Object,
+                newsletterConfirmation,
+                termsAndConditionsConfirmation);
 
             Assert.Throws<OrderCancelledException>(() =>
             {

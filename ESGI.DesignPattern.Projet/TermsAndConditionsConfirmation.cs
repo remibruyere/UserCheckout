@@ -5,7 +5,7 @@ using PresentationFake;
 
 namespace ESGI.DesignPattern.Projet
 {
-    class TermsAndConditionsConfirmation : IUserConfirmation
+    public class TermsAndConditionsConfirmation : IUserConfirmation
     {
         private readonly string message;
         private readonly IMessageBoxWrapper messageBoxWrapper;
