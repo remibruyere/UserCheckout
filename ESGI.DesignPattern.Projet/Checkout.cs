@@ -10,11 +10,11 @@ namespace ESGI.DesignPattern.Projet
 
         private readonly IEmailService emailService;
 
-        private readonly NewsletterConfirmation newsLetterSubscribed;
+        private readonly IUserConfirmation newsLetterSubscribed;
 
-        private readonly TermsAndConditionsConfirmation termsAndConditionsAccepted;
+        private readonly IUserConfirmation termsAndConditionsAccepted;
 
-        public Checkout(Product product, IEmailService emailService, NewsletterConfirmation newsletterConfirmation, TermsAndConditionsConfirmation termsAndConditionsConfirmation)
+        public Checkout(Product product, IEmailService emailService, IUserConfirmation newsletterConfirmation, IUserConfirmation termsAndConditionsConfirmation)
         {
             this.product = product;
             this.emailService = emailService;

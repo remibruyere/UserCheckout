@@ -4,10 +4,6 @@ using Xunit;
 
 namespace ESGI.DesignPattern.Projet.Tests
 {
-    /*
-     REFACTO:
-        - etendre UserConfimation sur deux classes : NewsletterConfimation / TermsAndConditionsConfimation
-     */
     public class Tests
     {
         [Fact]
@@ -19,8 +15,8 @@ namespace ESGI.DesignPattern.Projet.Tests
             Mock<IMessageBoxWrapper> mockMessageBoxWrapper = new Mock<IMessageBoxWrapper>();
             mockMessageBoxWrapper.Setup(x => x.Show(It.IsAny<string>())).Returns(MessageBoxResult.YES);
 
-            NewsletterConfirmation newsletterConfirmation = new NewsletterConfirmation(product, mockMessageBoxWrapper.Object);
-            TermsAndConditionsConfirmation termsAndConditionsConfirmation = new TermsAndConditionsConfirmation(product, mockMessageBoxWrapper.Object);
+            IUserConfirmation newsletterConfirmation = UserConfirmationFactory.Create(SubjectUserConfirmation.NewsLetterSubscription, product, mockMessageBoxWrapper.Object);
+            IUserConfirmation termsAndConditionsConfirmation = UserConfirmationFactory.Create(SubjectUserConfirmation.TermsAndConditions, product, mockMessageBoxWrapper.Object);
 
             Checkout checkout = new Checkout(
                 product,
@@ -44,8 +40,8 @@ namespace ESGI.DesignPattern.Projet.Tests
             mockMessageBoxWrapper.Setup(x => x.Show(It.IsAny<string>())).Returns(MessageBoxResult.YES);
             mockMessageBoxWrapper.Setup(x => x.Show("Subscribe to our product " + product.Name + " newsletter?")).Returns(MessageBoxResult.NO);
 
-            NewsletterConfirmation newsletterConfirmation = new NewsletterConfirmation(product, mockMessageBoxWrapper.Object);
-            TermsAndConditionsConfirmation termsAndConditionsConfirmation = new TermsAndConditionsConfirmation(product, mockMessageBoxWrapper.Object);
+            IUserConfirmation newsletterConfirmation = UserConfirmationFactory.Create(SubjectUserConfirmation.NewsLetterSubscription, product, mockMessageBoxWrapper.Object);
+            IUserConfirmation termsAndConditionsConfirmation = UserConfirmationFactory.Create(SubjectUserConfirmation.TermsAndConditions, product, mockMessageBoxWrapper.Object);
 
             Checkout checkout = new Checkout(
                 product,
@@ -67,8 +63,8 @@ namespace ESGI.DesignPattern.Projet.Tests
             mockMessageBoxWrapper.Setup(x => x.Show(It.IsAny<string>())).Returns(MessageBoxResult.YES);
             mockMessageBoxWrapper.Setup(x => x.Show("Accept our terms and conditions?\n(Mandatory to place order for " + product.Name + ")")).Returns(MessageBoxResult.NO);
 
-            NewsletterConfirmation newsletterConfirmation = new NewsletterConfirmation(product, mockMessageBoxWrapper.Object);
-            TermsAndConditionsConfirmation termsAndConditionsConfirmation = new TermsAndConditionsConfirmation(product, mockMessageBoxWrapper.Object);
+            IUserConfirmation newsletterConfirmation = UserConfirmationFactory.Create(SubjectUserConfirmation.NewsLetterSubscription, product, mockMessageBoxWrapper.Object);
+            IUserConfirmation termsAndConditionsConfirmation = UserConfirmationFactory.Create(SubjectUserConfirmation.TermsAndConditions, product, mockMessageBoxWrapper.Object);
 
             Checkout checkout = new Checkout(
                 product,
@@ -94,8 +90,8 @@ namespace ESGI.DesignPattern.Projet.Tests
 
             mockMessageBoxWrapper.Setup(x => x.Show(It.IsAny<string>())).Returns(MessageBoxResult.NO);
 
-            NewsletterConfirmation newsletterConfirmation = new NewsletterConfirmation(product, mockMessageBoxWrapper.Object);
-            TermsAndConditionsConfirmation termsAndConditionsConfirmation = new TermsAndConditionsConfirmation(product, mockMessageBoxWrapper.Object);
+            IUserConfirmation newsletterConfirmation = UserConfirmationFactory.Create(SubjectUserConfirmation.NewsLetterSubscription, product, mockMessageBoxWrapper.Object);
+            IUserConfirmation termsAndConditionsConfirmation = UserConfirmationFactory.Create(SubjectUserConfirmation.TermsAndConditions, product, mockMessageBoxWrapper.Object);
 
             Checkout checkout = new Checkout(
                 product,
