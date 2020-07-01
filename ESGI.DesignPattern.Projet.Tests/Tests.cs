@@ -15,14 +15,15 @@ namespace ESGI.DesignPattern.Projet.Tests
             Mock<IMessageBoxWrapper> mockMessageBoxWrapper = new Mock<IMessageBoxWrapper>();
             mockMessageBoxWrapper.Setup(x => x.Show(It.IsAny<string>())).Returns(MessageBoxResult.YES);
 
-            IUserConfirmation newsletterConfirmation = UserConfirmationFactory.Create(SubjectUserConfirmation.NewsLetterSubscription, product, mockMessageBoxWrapper.Object);
-            IUserConfirmation termsAndConditionsConfirmation = UserConfirmationFactory.Create(SubjectUserConfirmation.TermsAndConditions, product, mockMessageBoxWrapper.Object);
+            NewsletterConfirmation newsletterConfirmation = (NewsletterConfirmation)UserConfirmationFactory.Create(SubjectUserConfirmation.NewsLetterSubscription, product, mockMessageBoxWrapper.Object);
+            TermsAndConditionsConfirmation termsAndConditionsConfirmation = (TermsAndConditionsConfirmation)UserConfirmationFactory.Create(SubjectUserConfirmation.TermsAndConditions, product, mockMessageBoxWrapper.Object);
+
+            OrderConfirmation orderConfirmation = new OrderConfirmation(newsletterConfirmation, termsAndConditionsConfirmation);
 
             Checkout checkout = new Checkout(
                 product,
                 mockEmailService.Object,
-                newsletterConfirmation,
-                termsAndConditionsConfirmation);
+                orderConfirmation);
 
             checkout.ConfirmOrder();
 
@@ -40,14 +41,15 @@ namespace ESGI.DesignPattern.Projet.Tests
             mockMessageBoxWrapper.Setup(x => x.Show(It.IsAny<string>())).Returns(MessageBoxResult.YES);
             mockMessageBoxWrapper.Setup(x => x.Show("Subscribe to our product " + product.Name + " newsletter?")).Returns(MessageBoxResult.NO);
 
-            IUserConfirmation newsletterConfirmation = UserConfirmationFactory.Create(SubjectUserConfirmation.NewsLetterSubscription, product, mockMessageBoxWrapper.Object);
-            IUserConfirmation termsAndConditionsConfirmation = UserConfirmationFactory.Create(SubjectUserConfirmation.TermsAndConditions, product, mockMessageBoxWrapper.Object);
+            NewsletterConfirmation newsletterConfirmation = (NewsletterConfirmation)UserConfirmationFactory.Create(SubjectUserConfirmation.NewsLetterSubscription, product, mockMessageBoxWrapper.Object);
+            TermsAndConditionsConfirmation termsAndConditionsConfirmation = (TermsAndConditionsConfirmation)UserConfirmationFactory.Create(SubjectUserConfirmation.TermsAndConditions, product, mockMessageBoxWrapper.Object);
+
+            OrderConfirmation orderConfirmation = new OrderConfirmation(newsletterConfirmation, termsAndConditionsConfirmation);
 
             Checkout checkout = new Checkout(
                 product,
                 mockEmailService.Object,
-                newsletterConfirmation,
-                termsAndConditionsConfirmation);
+                orderConfirmation);
 
             mockEmailService.Verify(m => m.SubscribeUserFor(product), Times.Never());
         }
@@ -63,14 +65,15 @@ namespace ESGI.DesignPattern.Projet.Tests
             mockMessageBoxWrapper.Setup(x => x.Show(It.IsAny<string>())).Returns(MessageBoxResult.YES);
             mockMessageBoxWrapper.Setup(x => x.Show("Accept our terms and conditions?\n(Mandatory to place order for " + product.Name + ")")).Returns(MessageBoxResult.NO);
 
-            IUserConfirmation newsletterConfirmation = UserConfirmationFactory.Create(SubjectUserConfirmation.NewsLetterSubscription, product, mockMessageBoxWrapper.Object);
-            IUserConfirmation termsAndConditionsConfirmation = UserConfirmationFactory.Create(SubjectUserConfirmation.TermsAndConditions, product, mockMessageBoxWrapper.Object);
+            NewsletterConfirmation newsletterConfirmation = (NewsletterConfirmation)UserConfirmationFactory.Create(SubjectUserConfirmation.NewsLetterSubscription, product, mockMessageBoxWrapper.Object);
+            TermsAndConditionsConfirmation termsAndConditionsConfirmation = (TermsAndConditionsConfirmation)UserConfirmationFactory.Create(SubjectUserConfirmation.TermsAndConditions, product, mockMessageBoxWrapper.Object);
+
+            OrderConfirmation orderConfirmation = new OrderConfirmation(newsletterConfirmation, termsAndConditionsConfirmation);
 
             Checkout checkout = new Checkout(
                 product,
                 mockEmailService.Object,
-                newsletterConfirmation,
-                termsAndConditionsConfirmation);
+                orderConfirmation);
 
             Assert.Throws<OrderCancelledException>(() =>
             {
@@ -90,14 +93,15 @@ namespace ESGI.DesignPattern.Projet.Tests
 
             mockMessageBoxWrapper.Setup(x => x.Show(It.IsAny<string>())).Returns(MessageBoxResult.NO);
 
-            IUserConfirmation newsletterConfirmation = UserConfirmationFactory.Create(SubjectUserConfirmation.NewsLetterSubscription, product, mockMessageBoxWrapper.Object);
-            IUserConfirmation termsAndConditionsConfirmation = UserConfirmationFactory.Create(SubjectUserConfirmation.TermsAndConditions, product, mockMessageBoxWrapper.Object);
+            NewsletterConfirmation newsletterConfirmation = (NewsletterConfirmation)UserConfirmationFactory.Create(SubjectUserConfirmation.NewsLetterSubscription, product, mockMessageBoxWrapper.Object);
+            TermsAndConditionsConfirmation termsAndConditionsConfirmation = (TermsAndConditionsConfirmation)UserConfirmationFactory.Create(SubjectUserConfirmation.TermsAndConditions, product, mockMessageBoxWrapper.Object);
+
+            OrderConfirmation orderConfirmation = new OrderConfirmation(newsletterConfirmation, termsAndConditionsConfirmation);
 
             Checkout checkout = new Checkout(
                 product,
                 mockEmailService.Object,
-                newsletterConfirmation,
-                termsAndConditionsConfirmation);
+                orderConfirmation);
 
             Assert.Throws<OrderCancelledException>(() =>
             {
